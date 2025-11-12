@@ -9,12 +9,14 @@ import robot_competition.entities.TerrestrialRobot;
 import robot_competition.enums.PropellerType;
 import robot_competition.enums.TractionType;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class RobotManagerTest {
     RobotManager robotManager = new RobotManager();
+    List<Robot> robots = new ArrayList<>();
 
     @BeforeEach
     void setUp() {
@@ -40,6 +42,20 @@ class RobotManagerTest {
         }
         System.out.println();
     }
+
+    @Test
+    void filterRobotsByMaxSpeed50() {
+
+        List<Robot> filteredRobots = robotManager.robots.stream()
+                .filter(robot -> robot instanceof TerrestrialRobot terrestrialRobot
+                        && terrestrialRobot.getMaxSpeed() > 50)
+                .toList();
+
+       assertEquals(filteredRobots, robotManager.robots.get(1));
+
+    }
+
+
 
 
 }
