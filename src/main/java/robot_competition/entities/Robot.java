@@ -51,7 +51,7 @@ public abstract class Robot {
                 "name='" + name + '\'' +
                 ", manufacturer='" + manufacturer + '\'' +
                 ", productionYear=" + productionYear +
-                ", date=" + registerDate +
+                ", register date=" + registerDate +
                 '}';
     }
 }

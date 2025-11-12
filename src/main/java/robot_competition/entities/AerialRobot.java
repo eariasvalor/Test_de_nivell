@@ -1,6 +1,8 @@
 package robot_competition.entities;
 
-public class AerialRobot extends Robot {
+import robot_competition.Interface.ResistanceEvaluable;
+
+public class AerialRobot extends Robot implements ResistanceEvaluable {
     private int maxAltitude;
     private int flightAutonomy;
 
@@ -30,6 +32,16 @@ public class AerialRobot extends Robot {
 
     public void setFlightAutonomy(int flightAutonomy) {
         this.flightAutonomy = flightAutonomy;
+    }
+
+    @Override
+    public String getResistanceReport() {
+        String result = "This robot can take part in the competition.";
+
+        if(flightAutonomy < 60){
+            result = "This robot cannot take part in the competition.";
+        }
+        return result;
     }
 
     @Override

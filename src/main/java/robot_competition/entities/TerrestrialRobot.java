@@ -1,8 +1,9 @@
 package robot_competition.entities;
 
+import robot_competition.Interface.ResistanceEvaluable;
 import robot_competition.enums.TractionType;
 
-public class TerrestrialRobot extends Robot {
+public class TerrestrialRobot extends Robot implements ResistanceEvaluable {
     private int maxSpeed;
     private TractionType tractionType;
 
@@ -32,6 +33,15 @@ public class TerrestrialRobot extends Robot {
 
     public void setTractionType(TractionType tractionType) {
         this.tractionType = tractionType;
+    }
+
+    @Override
+    public String getResistanceReport() {
+        String result = "This robot can take part in the competition.";
+        if(!getTractionType().equals(TractionType.TRACKS)){
+            result = "This robot cannot take part in the competition.";
+        }
+        return result;
     }
 
     @Override
